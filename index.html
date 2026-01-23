@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Facade Services Limited</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a5276 0%, #2e86c1 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .construction-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(26, 82, 118, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26, 82, 118, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .logo i {
+            font-size: 3rem;
+            color: #e67e22;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .logo h1 {
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .error-container {
+            max-width: 700px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .error-code {
+            font-size: 12rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.15);
+            position: absolute;
+            top: -40px;
+            right: 20px;
+            line-height: 1;
+            z-index: 1;
+            user-select: none;
+        }
+        
+        .error-icon {
+            font-size: 5rem;
+            color: #e67e22;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .highlight {
+            color: #e67e22;
+            font-weight: bold;
+        }
+        
+        .navigation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .nav-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .nav-card:hover {
+            background: rgba(230, 126, 34, 0.2);
+            transform: translateY(-5px);
+            border-color: rgba(230, 126, 34, 0.3);
+        }
+        
+        .nav-card i {
+            font-size: 2.5rem;
+            color: #e67e22;
+        }
+        
+        .nav-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        
+        .nav-card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+        
+        .search-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 30px 0;
+            display: flex;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .search-button {
+            background: #e67e22;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-button:hover {
+            background: #d35400;
+        }
+        
+        .contact-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: left;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #e67e22;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+        
+        .contact-item i {
+            color: #e67e22;
+            font-size: 1.2rem;
+            min-width: 25px;
+        }
+        
+        .floating-crane {
+            position: absolute;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.1);
+            animation: craneMove 20s linear infinite;
+            z-index: 0;
+        }
+        
+        .crane-1 {
+            top: 20%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .crane-2 {
+            top: 60%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+        
+        .crane-3 {
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 10s;
+        }
+        
+        @keyframes craneMove {
+            0% { transform: translateX(-100px) rotate(0deg); }
+            50% { transform: translateX(calc(100vw + 100px)) rotate(180deg); }
+            51% { transform: translateX(calc(100vw + 100px)) rotate(180deg); }
+            100% { transform: translateX(-100px) rotate(360deg); }
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: white;
+            color: #1a5276;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background: #e67e22;
+            color: white;
+        }
+        
+        .copyright {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .floating-brick {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            background: rgba(230, 126, 34, 0.3);
+            border-radius: 3px;
+            animation: brickFall 10s linear infinite;
+            z-index: 0;
+        }
+        
+        @keyframes brickFall {
+            0% {
+                top: -50px;
+                transform: rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                transform: rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .error-container {
+                padding: 25px;
+            }
+            
+            .error-code {
+                font-size: 8rem;
+                top: -20px;
+                right: 10px;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+            
+            .logo i {
+                font-size: 2.5rem;
+            }
+            
+            .navigation {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .floating-crane {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 6rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+            
+            .error-icon {
+                font-size: 4rem;
+            }
+            
+            .contact-info {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="construction-grid"></div>
+    
+    <!-- Floating cranes -->
+    <div class="floating-crane crane-1">
+        <i class="fas fa-cogs"></i>
+    </div>
+    <div class="floating-crane crane-2">
+        <i class="fas fa-tools"></i>
+    </div>
+    <div class="floating-crane crane-3">
+        <i class="fas fa-hard-hat"></i>
+    </div>
+    
+    <!-- Floating bricks -->
+    <div class="floating-brick" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="floating-brick" style="left: 30%; animation-delay: 2s;"></div>
+    <div class="floating-brick" style="left: 50%; animation-delay: 4s;"></div>
+    <div class="floating-brick" style="left: 70%; animation-delay: 6s;"></div>
+    <div class="floating-brick" style="left: 90%; animation-delay: 8s;"></div>
+    
+    <div class="logo">
+        <i class="fas fa-building"></i>
+        <h1>Facade Services Limited</h1>
+    </div>
+    
+    <div class="error-container">
+        <div class="error-code">404</div>
+        
+        <div class="error-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        
+        <h2>Page Not Found</h2>
+        
+        <p>Looks like this blueprint got misplaced! The page you're looking for doesn't exist or has been moved.</p>
+        
+        <p>Don't worry - our construction team can help you build a better path!</p>
+        
+        <div class="navigation">
+            <a href="/" class="nav-card">
+                <i class="fas fa-home"></i>
+                <h3>Home Page</h3>
+                <p>Return to our main website</p>
+            </a>
+            
+            <a href="#services" class="nav-card">
+                <i class="fas fa-hard-hat"></i>
+                <h3>Our Services</h3>
+                <p>View our construction services</p>
+            </a>
+            
+            <a href="#contact" class="nav-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Contact Us</h3>
+                <p>Get in touch with our team</p>
+            </a>
+            
+            <a href="#projects" class="nav-card">
+                <i class="fas fa-project-diagram"></i>
+                <h3>Our Projects</h3>
+                <p>See our completed work</p>
+            </a>
+        </div>
+        
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Search our website...">
+            <button class="search-button">
+                <i class="fas fa-search"></i>
+                Search
+            </button>
+        </div>
+        
+        <div class="contact-info">
+            <h3><i class="fas fa-life-ring"></i> Need Immediate Assistance?</h3>
+            
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <div>
+                    <strong>Call Us:</strong> +254721991806
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <strong>Email Us:</strong> facadeservicesltd@gmail.com
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <strong>Visit Us:</strong> P.O Box 740 00515 Buruburu, Kiambu County
+                </div>
+            </div>
+        </div>
+        
+        <div class="social-links">
+            <a href="https://www.facebook.com/FacadeServices" target="_blank" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="mailto:facadeservicesltd@gmail.com" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="tel:+254721991806" title="Call">
+                <i class="fas fa-phone-alt"></i>
+            </a>
+            <a href="/" title="Home">
+                <i class="fas fa-home"></i>
+            </a>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2026 Facade Services Limited. All rights reserved.</p>
+            <p>Error 404 - Page Not Found | Company No: CPR/2015/205759</p>
+        </div>
+    </div>
+
+    <script>
+        // Search functionality
+        const searchInput = document.querySelector('.search-input');
+        const searchButton = document.querySelector('.search-button');
+        
+        searchButton.addEventListener('click', function() {
+            const searchTerm = searchInput.value.trim();
+            if (searchTerm) {
+                alert(`Searching for: "${searchTerm}"\n\nThis is a demo. In a real website, this would search your content.`);
+                searchInput.value = '';
+            } else {
+                alert('Please enter a search term.');
+            }
+        });
+        
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchButton.click();
+            }
+        });
+        
+        // Create more floating bricks
+        function createFloatingBricks() {
+            const container = document.body;
+            
+            for (let i = 0; i < 10; i++) {
+                const brick = document.createElement('div');
+                brick.className = 'floating-brick';
+                brick.style.left = Math.random() * 100 + '%';
+                brick.style.animationDelay = Math.random() * 10 + 's';
+                brick.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                brick.style.width = (Math.random() * 30 + 20) + 'px';
+                brick.style.height = (Math.random() * 10 + 10) + 'px';
+                container.appendChild(brick);
+            }
+        }
+        
+        createFloatingBricks();
+        
+        // Animate error icon
+        const errorIcon = document.querySelector('.error-icon i');
+        setInterval(() => {
+            errorIcon.style.transform = `rotate(${Math.random() * 20 - 10}deg)`;
+        }, 1000);
+        
+        // Typing effect for search placeholder
+        const placeholders = [
+            "Search for construction services...",
+            "Looking for project management?",
+            "Find our completed projects...",
+            "Search our website..."
+        ];
+        
+        let placeholderIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function typePlaceholder() {
+            const currentText = placeholders[placeholderIndex];
+            
+            if (isDeleting) {
+                searchInput.placeholder = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                searchInput.placeholder = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                setTimeout(typePlaceholder, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                placeholderIndex = (placeholderIndex + 1) % placeholders.length;
+                setTimeout(typePlaceholder, 500);
+            } else {
+                setTimeout(typePlaceholder, isDeleting ? 50 : 100);
+            }
+        }
+        
+        // Start typing effect
+        setTimeout(typePlaceholder, 1000);
+        
+        // Interactive navigation cards
+        document.querySelectorAll('.nav-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-5px) scale(1)';
+            });
+        });
+        
+        // Error code animation
+        const errorCode = document.querySelector('.error-code');
+        setInterval(() => {
+            errorCode.style.color = `rgba(255, 255, 255, ${Math.random() * 0.1 + 0.1})`;
+        }, 2000);
+    </script>
+</body>
+</html>
