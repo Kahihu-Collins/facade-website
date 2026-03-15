@@ -3,621 +3,492 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found - Facade Services Limited</title>
+    <title>Facade Services Limited - Construction & Project Management</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect x=%220%22 y=%220%22 width=%22100%22 height=%22100%22 fill=%22%231a5276%22/><rect x=%2220%22 y=%2220%22 width=%2215%22 height=%2260%22 fill=%22%23ffffff%22/><rect x=%2220%22 y=%2220%22 width=%2235%22 height=%2215%22 fill=%22%23ffffff%22/><rect x=%2220%22 y=%2240%22 width=%2225%22 height=%2215%22 fill=%22%23ffffff%22/><rect x=%2265%22 y=%2240%22 width=%2215%22 height=%2240%22 fill=%22%23e67e22%22/><rect x=%2245%22 y=%2225%22 width=%2215%22 height=%2255%22 fill=%22%23e67e22%22/></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect x=%220%22 y=%220%22 width=%22100%22 height=%22100%22 fill=%22%231a5276%22/><rect x=%2220%22 y=%2220%22 width=%2215%22 height=%2260%22 fill=%22%23ffffff%22/><rect x=%2220%22 y=%2220%22 width=%2235%22 height=%2215%22 fill=%22%23ffffff%22/><rect x=%2220%22 y=%2240%22 width=%2225%22 height=%2215%22 fill=%22%23ffffff%22/><rect x=%2265%22 y=%2240%22 width=%2215%22 height=%2240%22 fill=%22%23e67e22%22/><rect x=%2245%22 y=%2225%22 width=%2215%22 height=%2255%22 fill=%22%23e67e22%22/></svg>">
+    <meta name="theme-color" content="#1a5276">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #1a5276 0%, #2e86c1 100%);
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-            overflow-x: hidden;
-        }
-        
-        .construction-grid {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(26, 82, 118, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(26, 82, 118, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-        
-        .logo i {
-            font-size: 3rem;
-            color: #e67e22;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
-        .logo h1 {
-            font-size: 2.5rem;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .error-container {
-            max-width: 700px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .error-code {
-            font-size: 12rem;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.15);
-            position: absolute;
-            top: -40px;
-            right: 20px;
-            line-height: 1;
-            z-index: 1;
-            user-select: none;
-        }
-        
-        .error-icon {
-            font-size: 5rem;
-            color: #e67e22;
-            margin-bottom: 20px;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-        
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 2;
-        }
-        
-        p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .highlight {
-            color: #e67e22;
-            font-weight: bold;
-        }
-        
-        .navigation {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .nav-card {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 25px;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-decoration: none;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .nav-card:hover {
-            background: rgba(230, 126, 34, 0.2);
-            transform: translateY(-5px);
-            border-color: rgba(230, 126, 34, 0.3);
-        }
-        
-        .nav-card i {
-            font-size: 2.5rem;
-            color: #e67e22;
-        }
-        
-        .nav-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-        
-        .nav-card p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin: 0;
-        }
-        
-        .search-box {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 15px;
-            border-radius: 15px;
-            margin: 30px 0;
-            display: flex;
-            gap: 10px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .search-input {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            color: #333;
-            font-size: 1rem;
-            outline: none;
-        }
-        
-        .search-button {
-            background: #e67e22;
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .search-button:hover {
-            background: #d35400;
-        }
-        
-        .contact-info {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 25px;
-            border-radius: 15px;
-            margin-top: 30px;
-            text-align: left;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .contact-info h3 {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #e67e22;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .contact-item:last-child {
-            border-bottom: none;
-        }
-        
-        .contact-item i {
-            color: #e67e22;
-            font-size: 1.2rem;
-            min-width: 25px;
-        }
-        
-        .floating-crane {
-            position: absolute;
-            font-size: 3rem;
-            color: rgba(255, 255, 255, 0.1);
-            animation: craneMove 20s linear infinite;
-            z-index: 0;
-        }
-        
-        .crane-1 {
-            top: 20%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-        
-        .crane-2 {
-            top: 60%;
-            right: 10%;
-            animation-delay: 5s;
-        }
-        
-        .crane-3 {
-            bottom: 20%;
-            left: 15%;
-            animation-delay: 10s;
-        }
-        
-        @keyframes craneMove {
-            0% { transform: translateX(-100px) rotate(0deg); }
-            50% { transform: translateX(calc(100vw + 100px)) rotate(180deg); }
-            51% { transform: translateX(calc(100vw + 100px)) rotate(180deg); }
-            100% { transform: translateX(-100px) rotate(360deg); }
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: white;
-            color: #1a5276;
-            border-radius: 50%;
-            text-decoration: none;
-            font-size: 1.3rem;
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            transform: translateY(-5px);
-            background: #e67e22;
-            color: white;
-        }
-        
-        .copyright {
-            margin-top: 40px;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .floating-brick {
-            position: absolute;
-            width: 40px;
-            height: 20px;
-            background: rgba(230, 126, 34, 0.3);
-            border-radius: 3px;
-            animation: brickFall 10s linear infinite;
-            z-index: 0;
-        }
-        
-        @keyframes brickFall {
-            0% {
-                top: -50px;
-                transform: rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                top: 100vh;
-                transform: rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .error-container {
-                padding: 25px;
-            }
-            
-            .error-code {
-                font-size: 8rem;
-                top: -20px;
-                right: 10px;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-            
-            .logo h1 {
-                font-size: 1.8rem;
-            }
-            
-            .logo i {
-                font-size: 2.5rem;
-            }
-            
-            .navigation {
-                grid-template-columns: 1fr;
-            }
-            
-            .search-box {
-                flex-direction: column;
-            }
-            
-            .floating-crane {
-                display: none;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .error-code {
-                font-size: 6rem;
-            }
-            
-            h2 {
-                font-size: 1.6rem;
-            }
-            
-            p {
-                font-size: 1rem;
-            }
-            
-            .error-icon {
-                font-size: 4rem;
-            }
-            
-            .contact-info {
-                padding: 15px;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        :root { --primary: #1a5276; --secondary: #e67e22; --accent: #2e86c1; --dark: #2c3e50; --light: #f9f9f9; --gray: #ecf0f1; --shadow: 0 5px 15px rgba(0,0,0,0.08); --transition: all 0.3s ease; }
+        body { color: #333; line-height: 1.6; background-color: var(--light); }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        /* Header & Navigation */
+        header { background-color: rgba(255, 255, 255, 0.98); box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; z-index: 1000; transition: var(--transition); }
+        .header-container { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo h1 { font-size: 1.8rem; color: var(--primary); }
+        .logo i { color: var(--secondary); font-size: 2rem; }
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav a { text-decoration: none; color: var(--dark); font-weight: 600; transition: color 0.3s; position: relative; }
+        nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--secondary); transition: width 0.3s; }
+        nav a:hover::after, nav a.active::after { width: 100%; }
+        nav a:hover { color: var(--secondary); }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; color: var(--primary); cursor: pointer; }
+        /* Hero Section */
+        .hero { background: linear-gradient(rgba(26, 82, 118, 0.85), rgba(26, 82, 118, 0.9)), url('https://images.unsplash.com/photo-1503387769-00f5ec6d3d0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; color: white; text-align: center; padding: 180px 0 100px; margin-top: 80px; clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); min-height: 100vh; display: flex; align-items: center; }
+        .hero-content { max-width: 800px; margin: 0 auto; animation: fadeInUp 1s ease-out; }
+        .hero h2 { font-size: 3.5rem; margin-bottom: 20px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); animation: fadeInUp 1s ease-out 0.2s both; }
+        .hero p { font-size: 1.3rem; margin: 0 auto 30px; opacity: 0.9; animation: fadeInUp 1s ease-out 0.4s both; }
+        .cta-button { display: inline-block; background-color: var(--secondary); color: white; padding: 18px 35px; border-radius: 5px; text-decoration: none; font-weight: 600; font-size: 1.2rem; transition: all 0.3s; border: 2px solid var(--secondary); cursor: pointer; animation: fadeInUp 1s ease-out 0.6s both; }
+        .cta-button:hover { background-color: transparent; color: var(--secondary); transform: translateY(-3px) scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+        /* Stats Section */
+        .stats { background-color: var(--primary); color: white; padding: 60px 0; margin-top: -5%; position: relative; z-index: 1; border-radius: 10px; box-shadow: var(--shadow); }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center; }
+        .stat-item i { font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px; }
+        .stat-item h3 { font-size: 2.5rem; margin-bottom: 5px; }
+        .stat-item p { opacity: 0.9; }
+        /* Sections */
+        section { padding: 100px 0; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; position: relative; display: inline-block; }
+        .section-title h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background-color: var(--secondary); }
+        .section-title p { color: #666; max-width: 700px; margin: 20px auto 0; }
+        /* About Section */
+        .about-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; }
+        .about-text h3 { font-size: 1.8rem; margin-bottom: 20px; color: var(--dark); }
+        .vision-box { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; padding: 30px; border-radius: 10px; margin-top: 30px; box-shadow: var(--shadow); }
+        .vision-box h4 { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .construction-image-container { position: relative; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); height: 400px; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); display: flex; align-items: center; justify-content: center; }
+        .construction-image { width: 100%; height: 100%; object-fit: cover; }
+        .image-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(26, 82, 118, 0.8)); color: white; padding: 20px; text-align: center; }
+        .image-overlay h4 { margin-bottom: 5px; font-size: 1.5rem; }
+        /* Services Section */
+        .services { background-color: var(--gray); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+        .service-card { background-color: white; padding: 30px; border-radius: 10px; box-shadow: var(--shadow); transition: var(--transition); text-align: center; position: relative; overflow: hidden; }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background-color: var(--secondary); transform: scaleX(0); transition: transform 0.3s; }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .service-card i { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+        .service-card h3 { margin-bottom: 15px; color: var(--dark); }
+        /* Team Section */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; }
+        .team-card { background-color: white; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); }
+        .team-card:hover { transform: translateY(-10px); }
+        .team-img { height: 200px; background-color: var(--gray); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--primary); }
+        .team-info { padding: 25px; text-align: center; }
+        .team-info h4 { margin-bottom: 5px; color: var(--primary); }
+        .team-info .role { color: var(--secondary); font-weight: 600; margin-bottom: 10px; }
+        /* Methodology Section */
+        .methodology { background-color: var(--gray); }
+        .methodology-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .method-card { background-color: white; padding: 25px; border-radius: 10px; box-shadow: var(--shadow); transition: var(--transition); border-left: 5px solid var(--secondary); }
+        .method-card:hover { transform: translateY(-5px); }
+        .method-card h4 { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: var(--primary); }
+        .method-card .number { background-color: var(--secondary); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        /* Projects Gallery */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .project-item { position: relative; border-radius: 10px; overflow: hidden; height: 250px; cursor: pointer; box-shadow: var(--shadow); }
+        .project-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .project-item:hover img { transform: scale(1.1); }
+        .project-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(26, 82, 118, 0.9)); color: white; padding: 20px; transform: translateY(100%); transition: transform 0.3s; }
+        .project-item:hover .project-overlay { transform: translateY(0); }
+        .project-overlay h4 { margin-bottom: 5px; }
+        .project-overlay .location { font-size: 0.9rem; opacity: 0.9; }
+        .project-overlay .cost { font-weight: bold; color: var(--secondary); margin-top: 10px; }
+        /* Process Section */
+        .process-timeline { position: relative; max-width: 900px; margin: 0 auto; }
+        .process-timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background-color: var(--primary); transform: translateX(-50%); }
+        .process-item { display: flex; align-items: center; margin-bottom: 40px; position: relative; }
+        .process-item:nth-child(odd) { flex-direction: row-reverse; }
+        .process-content { background-color: white; padding: 25px; border-radius: 10px; box-shadow: var(--shadow); width: 45%; position: relative; }
+        .process-item:nth-child(odd) .process-content { text-align: right; }
+        .process-content h4 { color: var(--primary); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .process-item:nth-child(even) .process-content h4 { justify-content: flex-end; }
+        .process-icon { position: absolute; left: 50%; top: 0; width: 50px; height: 50px; background-color: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; transform: translateX(-50%); z-index: 1; }
+        /* Contact Section */
+        .contact { background-color: var(--gray); }
+        .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .contact-info h3 { margin-bottom: 20px; color: var(--primary); }
+        .contact-details { margin-top: 30px; }
+        .contact-details p { margin-bottom: 15px; display: flex; align-items: flex-start; }
+        .contact-details i { color: var(--secondary); margin-right: 15px; margin-top: 5px; min-width: 20px; }
+        .staff-contact { background-color: white; padding: 20px; border-radius: 10px; margin-top: 30px; box-shadow: var(--shadow); }
+        .staff-contact h4 { color: var(--primary); margin-bottom: 15px; border-bottom: 2px solid var(--gray); padding-bottom: 10px; }
+        .staff-contact div { margin-bottom: 10px; }
+        .social-links { display: flex; gap: 15px; margin-top: 20px; }
+        .social-links a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: var(--primary); color: white; border-radius: 50%; text-decoration: none; transition: var(--transition); }
+        .social-links a:hover { background-color: var(--secondary); transform: translateY(-3px); }
+        .contact-form input, .contact-form textarea, .contact-form select { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; transition: var(--transition); }
+        .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { outline: none; border-color: var(--secondary); box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1); }
+        .contact-form textarea { height: 150px; resize: vertical; }
+        /* Footer */
+        footer { background-color: var(--dark); color: white; padding: 50px 0 20px; }
+        .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-logo h3 { color: white; margin-bottom: 20px; }
+        .footer-logo p { opacity: 0.8; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: rgba(255,255,255,0.8); text-decoration: none; transition: var(--transition); }
+        .footer-links a:hover { color: var(--secondary); padding-left: 5px; }
+        .footer-contacts { color: rgba(255,255,255,0.8); }
+        .footer-contacts h4 { color: white; margin-bottom: 20px; }
+        .contact-item { margin-bottom: 15px; display: flex; align-items: flex-start; }
+        .contact-item i { color: var(--secondary); margin-right: 10px; margin-top: 5px; }
+        .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+        /* Modal */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .modal-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 2.5rem; cursor: pointer; transition: var(--transition); }
+        .modal-close:hover { color: var(--secondary); }
+        /* Animations */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        /* Responsive */
+        @media (max-width: 992px) { .hero h2 { font-size: 2.5rem; } .process-timeline::before { left: 30px; } .process-item { flex-direction: row !important; } .process-content { width: calc(100% - 80px); margin-left: 80px; text-align: left !important; } .process-content h4 { justify-content: flex-start !important; } .process-icon { left: 30px; } }
+        @media (max-width: 768px) { .header-container { padding: 15px 0; } .mobile-menu-btn { display: block; } nav { position: fixed; top: 80px; left: 0; width: 100%; background-color: white; box-shadow: 0 5px 10px rgba(0,0,0,0.1); padding: 20px; transform: translateY(-100%); opacity: 0; visibility: hidden; transition: all 0.3s; } nav.active { transform: translateY(0); opacity: 1; visibility: visible; } nav ul { flex-direction: column; gap: 15px; } .hero { padding: 150px 0 80px; margin-top: 70px; min-height: auto; } .hero h2 { font-size: 2rem; } section { padding: 80px 0; } .section-title h2 { font-size: 2rem; } .stats { margin-top: 0; border-radius: 0; } .construction-image-container { height: 300px; } }
+        @media (max-width: 576px) { .hero h2 { font-size: 1.8rem; } .hero p { font-size: 1rem; } .cta-button { padding: 12px 25px; font-size: 1rem; } .service-card { padding: 20px; } .process-content { padding: 20px; } .construction-image-container { height: 250px; } }
     </style>
 </head>
 <body>
-    <div class="construction-grid"></div>
-    
-    <!-- Floating cranes -->
-    <div class="floating-crane crane-1">
-        <i class="fas fa-cogs"></i>
-    </div>
-    <div class="floating-crane crane-2">
-        <i class="fas fa-tools"></i>
-    </div>
-    <div class="floating-crane crane-3">
-        <i class="fas fa-hard-hat"></i>
-    </div>
-    
-    <!-- Floating bricks -->
-    <div class="floating-brick" style="left: 10%; animation-delay: 0s;"></div>
-    <div class="floating-brick" style="left: 30%; animation-delay: 2s;"></div>
-    <div class="floating-brick" style="left: 50%; animation-delay: 4s;"></div>
-    <div class="floating-brick" style="left: 70%; animation-delay: 6s;"></div>
-    <div class="floating-brick" style="left: 90%; animation-delay: 8s;"></div>
-    
-    <div class="logo">
-        <i class="fas fa-building"></i>
-        <h1>Facade Services Limited</h1>
-    </div>
-    
-    <div class="error-container">
-        <div class="error-code">404</div>
-        
-        <div class="error-icon">
-            <i class="fas fa-exclamation-triangle"></i>
-        </div>
-        
-        <h2>Page Not Found</h2>
-        
-        <p>Looks like this blueprint got misplaced! The page you're looking for doesn't exist or has been moved.</p>
-        
-        <p>Don't worry - our construction team can help you build a better path!</p>
-        
-        <div class="navigation">
-            <a href="/" class="nav-card">
-                <i class="fas fa-home"></i>
-                <h3>Home Page</h3>
-                <p>Return to our main website</p>
-            </a>
-            
-            <a href="#services" class="nav-card">
-                <i class="fas fa-hard-hat"></i>
-                <h3>Our Services</h3>
-                <p>View our construction services</p>
-            </a>
-            
-            <a href="#contact" class="nav-card">
-                <i class="fas fa-envelope"></i>
-                <h3>Contact Us</h3>
-                <p>Get in touch with our team</p>
-            </a>
-            
-            <a href="#projects" class="nav-card">
-                <i class="fas fa-project-diagram"></i>
-                <h3>Our Projects</h3>
-                <p>See our completed work</p>
-            </a>
-        </div>
-        
-        <div class="search-box">
-            <input type="text" class="search-input" placeholder="Search our website...">
-            <button class="search-button">
-                <i class="fas fa-search"></i>
-                Search
-            </button>
-        </div>
-        
-        <div class="contact-info">
-            <h3><i class="fas fa-life-ring"></i> Need Immediate Assistance?</h3>
-            
-            <div class="contact-item">
-                <i class="fas fa-phone-alt"></i>
-                <div>
-                    <strong>Call Us:</strong> +254721991806
-                </div>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-building"></i>
+                <h1>Facade Services Limited</h1>
             </div>
-            
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <div>
-                    <strong>Email Us:</strong> facadeservicesltd@gmail.com
-                </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Building Excellence Since 2015</h2>
+                <p>Professional construction and project management services delivering innovative solutions for complex projects across Kenya. We transform architectural visions into reality with precision and expertise.</p>
+                <a href="#contact" class="cta-button">Start Your Project Today</a>
             </div>
-            
-            <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <div>
-                    <strong>Visit Us:</strong> P.O Box 740 00515 Buruburu, Kiambu County
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item"><i class="fas fa-calendar-check"></i><h3>10+</h3><p>Years Experience</p></div>
+                <div class="stat-item"><i class="fas fa-project-diagram"></i><h3>50+</h3><p>Projects Completed</p></div>
+                <div class="stat-item"><i class="fas fa-users"></i><h3>15+</h3><p>Expert Team Members</p></div>
+                <div class="stat-item"><i class="fas fa-award"></i><h3>100%</h3><p>Client Satisfaction</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Our Company</h2>
+                <p>A leading construction project management firm providing innovative solutions in diverse projects</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Your Trusted Construction Partner</h3>
+                    <p>Facade Services Ltd is a multi-disciplinary construction and engineering Project Management consulting firm with a team of professionals with a wealth of experience and training in different disciplines of Construction Management and Engineering.</p>
+                    <p>Over the years, we have undertaken many challenging projects, accumulated technical skills, experience and know-how in sustainable design and build solutions, building trades and related engineering services.</p>
+                    <div class="vision-box">
+                        <h4><i class="fas fa-bullseye"></i> Our Vision</h4>
+                        <p>A leading construction project management firm providing innovative solutions in diverse projects.</p>
+                    </div>
+                </div>
+                <div class="construction-image-container">
+                    <img src="https://images.unsplash.com/photo-1503387769-00f5ec6d3d0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Construction Site" class="construction-image" onerror="this.onerror=null; this.src='data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"400\" viewBox=\"0 0 800 400\"><rect width=\"800\" height=\"400\" fill=\"%23c3cfe2\"/><text x=\"400\" y=\"200\" font-family=\"Arial\" font-size=\"24\" fill=\"%231a5276\" text-anchor=\"middle\" dy=\".3em\">Construction Excellence</text><text x=\"400\" y=\"240\" font-family=\"Arial\" font-size=\"16\" fill=\"%231a5276\" text-anchor=\"middle\" dy=\".3em\">Facade Services Limited</text></svg>';">
+                    <div class="image-overlay">
+                        <h4>Construction Excellence</h4>
+                        <p>Transforming visions into reality since 2015</p>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <div class="social-links">
-            <a href="https://www.facebook.com/FacadeServices" target="_blank" title="Facebook">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="mailto:facadeservicesltd@gmail.com" title="Email">
-                <i class="fas fa-envelope"></i>
-            </a>
-            <a href="tel:+254721991806" title="Call">
-                <i class="fas fa-phone-alt"></i>
-            </a>
-            <a href="/" title="Home">
-                <i class="fas fa-home"></i>
-            </a>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We offer comprehensive construction and project management services tailored to your needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card"><i class="fas fa-project-diagram"></i><h3>Development Management</h3><p>End-to-end project and program management services for construction projects of all scales.</p><ul style="text-align: left; margin-top: 10px; padding-left: 20px;"><li>Project Management</li><li>Program Management</li></ul></div>
+                <div class="service-card"><i class="fas fa-chart-line"></i><h3>Finance Management</h3><p>Comprehensive financial planning and management for construction projects.</p><ul style="text-align: left; margin-top: 10px; padding-left: 20px;"><li>Finance Procurement</li><li>Project Finance Management</li></ul></div>
+                <div class="service-card"><i class="fas fa-business-time"></i><h3>Venture Business Development</h3><p>Strategic planning and development for construction ventures and facilities.</p><ul style="text-align: left; margin-top: 10px; padding-left: 20px;"><li>Facilities Management</li><li>Procurement Management</li></ul></div>
+                <div class="service-card"><i class="fas fa-hard-hat"></i><h3>Construction Management</h3><p>Complete construction oversight from planning to completion with quality assurance.</p></div>
+                <div class="service-card"><i class="fas fa-tools"></i><h3>Procurement Practice</h3><p>Strategic procurement planning including tenders, RFQs, and RFPs for optimal project outcomes.</p></div>
+                <div class="service-card"><i class="fas fa-clipboard-check"></i><h3>Risk Management</h3><p>Comprehensive risk assessment and mitigation strategies for construction projects.</p></div>
+            </div>
         </div>
-        
-        <div class="copyright">
-            <p>&copy; 2026 Facade Services Limited. All rights reserved.</p>
-            <p>Error 404 - Page Not Found | Company No: CPR/2015/205759</p>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team">
+        <div class="container">
+            <div class="section-title"><h2>Our Team</h2><p>Meet our experienced professionals dedicated to delivering excellence</p></div>
+            <div class="team-grid">
+                <div class="team-card"><div class="team-img"><i class="fas fa-user-tie"></i></div><div class="team-info"><h4>Stephen Kagume</h4><p class="role">Director & Lead Project Manager</p><p>BSc Construction Management, MBA. Over 13 years experience in construction and project management.</p></div></div>
+                <div class="team-card"><div class="team-img"><i class="fas fa-user-cog"></i></div><div class="team-info"><h4>Stephen Kario</h4><p class="role">Director & Operations Manager</p><p>Responsible for day-to-day operations, company strategy implementation and vision.</p></div></div>
+                <div class="team-card"><div class="team-img"><i class="fas fa-hard-hat"></i></div><div class="team-info"><h4>George Marigi</h4><p class="role">Construction Manager</p><p>Oversees all works, ensures specifications are met, and supervises site staff.</p></div></div>
+                <div class="team-card"><div class="team-img"><i class="fas fa-file-invoice-dollar"></i></div><div class="team-info"><h4>Esther Kinyua</h4><p class="role">Accountant</p><p>Maintains accounting transactions and prepares accurate financial reports.</p></div></div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section class="methodology">
+        <div class="container">
+            <div class="section-title"><h2>Project Management Methodology</h2><p>Our systematic approach ensures successful project delivery</p></div>
+            <div class="methodology-grid">
+                <div class="method-card"><h4><span class="number">1</span> Project Integration</h4><p>Coordination of various processes throughout project implementation with detailed resource planning.</p></div>
+                <div class="method-card"><h4><span class="number">2</span> Project Scope</h4><p>Setting mechanisms to ensure projects include all required work for successful completion.</p></div>
+                <div class="method-card"><h4><span class="number">3</span> Project Schedule</h4><p>Implementing time management tools to ensure timely project completion.</p></div>
+                <div class="method-card"><h4><span class="number">4</span> Project Costs</h4><p>Managing control systems to ensure projects stay within budget.</p></div>
+                <div class="method-card"><h4><span class="number">5</span> Project Quality</h4><p>Ensuring projects satisfy intended needs and meet quality standards.</p></div>
+                <div class="method-card"><h4><span class="number">6</span> Human Resources</h4><p>Optimizing utilization of human resources involved in projects.</p></div>
+                <div class="method-card"><h4><span class="number">7</span> Communication</h4><p>Establishing effective communication channels for timely information dissemination.</p></div>
+                <div class="method-card"><h4><span class="number">8</span> Project Risk</h4><p>Systematic identification, analysis and response to project risks.</p></div>
+                <div class="method-card"><h4><span class="number">9</span> Project Procurement</h4><p>Managing processes to acquire necessary goods and services for project completion.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title"><h2>Our Projects</h2><p>Explore some of our successfully completed construction projects</p></div>
+            <div class="projects-grid">
+                <div class="project-item" onclick="openModal('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="1449 Jacaranda, Lavington">
+                    <div class="project-overlay"><h4>1449 Jacaranda, Lavington</h4><p class="location">Luxury Townhouses - Nairobi</p><p class="cost">KShs. 600 million</p><p>6 luxury townhouses - Project Management & Procurement</p></div>
+                </div>
+                <div class="project-item" onclick="openModal('https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Acacia Gardens, Karen">
+                    <div class="project-overlay"><h4>Acacia Gardens, Karen</h4><p class="location">Karen, Nairobi</p><p class="cost">KShs. 10 million</p><p>1 acre landscaping and container structures</p></div>
+                </div>
+                <div class="project-item" onclick="openModal('https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="BSS Africa Annex, Westlands">
+                    <div class="project-overlay"><h4>BSS Africa Annex, Westlands</h4><p class="location">Westlands, Nairobi</p><p class="cost">KShs. 5 million</p><p>Construction & Project Management - Complete renovations</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Process Section -->
+    <section class="process">
+        <div class="container">
+            <div class="section-title"><h2>Project Implementation Process</h2><p>Our systematic 5-stage approach ensures successful project delivery</p></div>
+            <div class="process-timeline">
+                <div class="process-item"><div class="process-content"><h4><i class="fas fa-flag"></i> Project Initiation</h4><p>Client needs analysis, conceptual designs, financial analysis, consultant selection, and project charter development.</p></div><div class="process-icon"><i class="fas fa-flag"></i></div></div>
+                <div class="process-item"><div class="process-content"><h4><i class="fas fa-tasks"></i> Project Planning</h4><p>Detailed project planning based on contract and design documentation, defining objectives and implementation methods.</p></div><div class="process-icon"><i class="fas fa-tasks"></i></div></div>
+                <div class="process-item"><div class="process-content"><h4><i class="fas fa-play-circle"></i> Project Execution</h4><p>Coordinating people and resources to carry out approved plans from design start to construction completion.</p></div><div class="process-icon"><i class="fas fa-play-circle"></i></div></div>
+                <div class="process-item"><div class="process-content"><h4><i class="fas fa-chart-line"></i> Control Processes</h4><p>Monitoring progress, identifying variances, and implementing corrective actions to ensure objectives are met.</p></div><div class="process-icon"><i class="fas fa-chart-line"></i></div></div>
+                <div class="process-item"><div class="process-content"><h4><i class="fas fa-check-circle"></i> Project Closure</h4><p>Formal acceptance, final documentation, and orderly project conclusion with lessons learned.</p></div><div class="process-icon"><i class="fas fa-check-circle"></i></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title"><h2>Contact Us</h2><p>Get in touch with us for professional construction and project management services</p></div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>Contact our expert team for your construction project needs. We provide comprehensive consultations and free quotes.</p>
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i><span><strong>Registered Office:</strong><br>P.O Box 740 00515 Buruburu<br>Box Park, Mwihoko Building, Githurai<br>Kiambu County, Ruiru District</span></p>
+                        <p><i class="fas fa-phone-alt"></i><span><strong>Phone:</strong> +254721991806</span></p>
+                        <p><i class="fas fa-envelope"></i><span><strong>Email:</strong> facadeservicesltd@gmail.com</span></p>
+                    </div>
+                    <div class="staff-contact">
+                        <h4>Key Contacts</h4>
+                        <div><strong>Steve Kagume (GM):</strong> +254 725 762787 | skagume@gmail.com</div>
+                        <div><strong>Stephen Kario (COO):</strong> 0721991806 | facadeservicesltd@gmail.com</div>
+                        <div><strong>Anne Kariuki (Procurement):</strong> +254 718 533589 | annitakikie@gmail.com</div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/FacadeServices" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="text" placeholder="Phone Number">
+                        <select required><option value="">Select Service</option><option value="development">Development Management</option><option value="finance">Finance Management</option><option value="venture">Venture Business Development</option><option value="construction">Construction Management</option><option value="procurement">Procurement Services</option><option value="consultation">Consultation</option></select>
+                        <textarea placeholder="Your Project Details" required></textarea>
+                        <button type="submit" class="cta-button" style="width:100%; border:none;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <h3>Facade Services Limited</h3>
+                    <p>Multi-disciplinary construction and engineering Project Management consulting firm with over a decade of experience.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#services">Our Services</a></li><li><a href="#team">Our Team</a></li><li><a href="#projects">Our Projects</a></li><li><a href="#contact">Contact Us</a></li></ul>
+                </div>
+                <div class="footer-contacts">
+                    <h4>Key Contacts</h4>
+                    <div class="contact-item"><i class="fas fa-user-tie"></i><div><strong>Stephen Kagume</strong><br>Director & Lead Project Manager<br>+254 725 762787</div></div>
+                    <div class="contact-item"><i class="fas fa-user-cog"></i><div><strong>Stephen Kario</strong><br>Director & Operations Manager<br>0721991806</div></div>
+                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><div><strong>Location:</strong><br>P.O Box 740 00515 Buruburu<br>Kiambu County, Ruiru District</div></div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Facade Services Limited. All rights reserved. | Registered under The Companies Act, 2015</p>
+                <p style="margin-top: 10px;">Company No: CPR/2015/205759 | Registered: 7th Sep, 2015</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div class="modal" id="imageModal"><span class="modal-close" onclick="closeModal()">&times;</span><img class="modal-content" id="modalImage" alt="Project Image"></div>
 
     <script>
-        // Search functionality
-        const searchInput = document.querySelector('.search-input');
-        const searchButton = document.querySelector('.search-button');
-        
-        searchButton.addEventListener('click', function() {
-            const searchTerm = searchInput.value.trim();
-            if (searchTerm) {
-                alert(`Searching for: "${searchTerm}"\n\nThis is a demo. In a real website, this would search your content.`);
-                searchInput.value = '';
-            } else {
-                alert('Please enter a search term.');
-            }
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
-        
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchButton.click();
-            }
-        });
-        
-        // Create more floating bricks
-        function createFloatingBricks() {
-            const container = document.body;
-            
-            for (let i = 0; i < 10; i++) {
-                const brick = document.createElement('div');
-                brick.className = 'floating-brick';
-                brick.style.left = Math.random() * 100 + '%';
-                brick.style.animationDelay = Math.random() * 10 + 's';
-                brick.style.animationDuration = (Math.random() * 5 + 8) + 's';
-                brick.style.width = (Math.random() * 30 + 20) + 'px';
-                brick.style.height = (Math.random() * 10 + 10) + 'px';
-                container.appendChild(brick);
-            }
-        }
-        
-        createFloatingBricks();
-        
-        // Animate error icon
-        const errorIcon = document.querySelector('.error-icon i');
-        setInterval(() => {
-            errorIcon.style.transform = `rotate(${Math.random() * 20 - 10}deg)`;
-        }, 1000);
-        
-        // Typing effect for search placeholder
-        const placeholders = [
-            "Search for construction services...",
-            "Looking for project management?",
-            "Find our completed projects...",
-            "Search our website..."
-        ];
-        
-        let placeholderIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        
-        function typePlaceholder() {
-            const currentText = placeholders[placeholderIndex];
-            
-            if (isDeleting) {
-                searchInput.placeholder = currentText.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                searchInput.placeholder = currentText.substring(0, charIndex + 1);
-                charIndex++;
-            }
-            
-            if (!isDeleting && charIndex === currentText.length) {
-                isDeleting = true;
-                setTimeout(typePlaceholder, 2000);
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                placeholderIndex = (placeholderIndex + 1) % placeholders.length;
-                setTimeout(typePlaceholder, 500);
-            } else {
-                setTimeout(typePlaceholder, isDeleting ? 50 : 100);
-            }
-        }
-        
-        // Start typing effect
-        setTimeout(typePlaceholder, 1000);
-        
-        // Interactive navigation cards
-        document.querySelectorAll('.nav-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-8px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(-5px) scale(1)';
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
-        
-        // Error code animation
-        const errorCode = document.querySelector('.error-code');
-        setInterval(() => {
-            errorCode.style.color = `rgba(255, 255, 255, ${Math.random() * 0.1 + 0.1})`;
-        }, 2000);
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+                }
+            });
+        });
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const service = this.querySelector('select').value;
+            alert(`Thank you, ${name}! Your project inquiry has been received. We will contact you at ${email} within 24 hours to discuss your ${service} needs.`);
+            this.reset();
+        });
+        // Image Modal Functions
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = imageSrc;
+            modal.style.display = 'flex';
+        }
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+        }
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('imageModal');
+            if(e.target === modal) { closeModal(); }
+        });
+        // Active nav links on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if(pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href').substring(1) === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+            const header = document.querySelector('header');
+            if(window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+        // Animate stats counter
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-item h3');
+            stats.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if(current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : '');
+                }, 30);
+            });
+        }
+        const statsSection = document.querySelector('.stats');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        observer.observe(statsSection);
+        // Typing effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroTitle = document.querySelector('.hero h2');
+            const heroText = heroTitle.textContent;
+            heroTitle.textContent = '';
+            let i = 0;
+            function typeWriter() {
+                if (i < heroText.length) {
+                    heroTitle.textContent += heroText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            setTimeout(typeWriter, 500);
+        });
+        // Image fallback
+        const constructionImage = document.querySelector('.construction-image');
+        constructionImage.addEventListener('error', function() {
+            this.src = 'data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400"><rect width="800" height="400" fill="%23c3cfe2"/><text x="400" y="200" font-family="Arial" font-size="24" fill="%231a5276" text-anchor="middle" dy=".3em">Construction Excellence</text><text x="400" y="240" font-family="Arial" font-size="16" fill="%231a5276" text-anchor="middle" dy=".3em">Facade Services Limited</text></svg>';
+        });
     </script>
 </body>
 </html>
